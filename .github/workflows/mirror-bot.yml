@@ -45,6 +45,7 @@ jobs:
         timeout-minutes: 340
         continue-on-error: true
         run: |
+           pip3 install -r requirements.txt
           docker run --privileged --rm -i mirror-bot
 
       - name: Loop Workflow
