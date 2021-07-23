@@ -38,6 +38,7 @@ jobs:
         run: |
           cd mirror-bot || exit 1
           docker container prune --force || true
+          pip3 install -r requirements.txt
           docker build . --rm --force-rm --compress --no-cache=true --pull --file Dockerfile -t mirror-bot
           docker image ls
 
@@ -45,7 +46,6 @@ jobs:
         timeout-minutes: 340
         continue-on-error: true
         run: |
-           pip3 install -r requirements.txt
           docker run --privileged --rm -i mirror-bot
 
       - name: Loop Workflow
